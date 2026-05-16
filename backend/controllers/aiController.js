@@ -10,7 +10,7 @@ const callOpenRouter = async (prompt, maxTokens = 1000) => {
   const response = await axios.post(
     'https://openrouter.ai/api/v1/chat/completions',
     {
-      model: 'mistralai/mistral-7b-instruct:free', // Free model on OpenRouter
+      model: 'openai/gpt-3.5-turbo', // Free model on OpenRouter
       messages: [
         {
           role: 'system',
@@ -28,8 +28,7 @@ const callOpenRouter = async (prompt, maxTokens = 1000) => {
       headers: {
         'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
         'Content-Type': 'application/json',
-        'HTTP-Referer': process.env.FRONTEND_URL || 'http://localhost:5173',
-        'X-Title': 'Candidate Shortlisting System'
+        
       }
     }
   );
